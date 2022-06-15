@@ -1,17 +1,14 @@
 @charset "utf-8";
 
-//
-// color: #12a3d3;
-
-// color: #0ca3d3;
+/* color: #12a3d3; */
+/* color: #0ca3d3; */
 
 /* base */
-
-// fonts
 * {
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
     'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  box-sizing: border-box;
 }
 
 code,
@@ -22,23 +19,213 @@ samp {
     'Courier New', monospace;
 }
 
-// select
-// button
+/* select */
+/* button */
 
 /* layout */
-// grid system
+/* ----- */
+
+/* grid system */
 .container {
   width: 100%;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 18px;
+  padding-left: 18px;
   margin-right: auto;
   margin-left: auto;
 }
 
-/* module */
-// loader
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -12px;
+  margin-left: -12px;
+}
 
-// pagination
+.row > * {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+.col {
+  flex: 1 0 0%;
+}
+
+.col-1 {
+  flex: 0 0 auto;
+  width: 8.33333333%;
+}
+
+.col-2 {
+  flex: 0 0 auto;
+  width: 16.66666667%;
+}
+
+.col-3 {
+  flex: 0 0 auto;
+  width: 25%;
+}
+
+.col-4 {
+  flex: 0 0 auto;
+  width: 33.33333333%;
+}
+
+.col-5 {
+  flex: 0 0 auto;
+  width: 41.66666667%;
+}
+
+.col-6 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.col-7 {
+  flex: 0 0 auto;
+  width: 58.33333333%;
+}
+
+.col-8 {
+  flex: 0 0 auto;
+  width: 66.66666667%;
+}
+
+.col-9 {
+  flex: 0 0 auto;
+  width: 75%;
+}
+
+.col-10 {
+  flex: 0 0 auto;
+  width: 83.33333333%;
+}
+
+.col-11 {
+  flex: 0 0 auto;
+  width: 91.66666667%;
+}
+
+.col-12 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+
+  .col-md-4 {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+  }
+
+  .col-md-8 {
+    flex: 0 0 auto;
+    width: 66.66666667%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* module */
+/* ----- */
+
+/* badge */
+.badge {
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: #0dcaf0;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* button */
+.button {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding-top: 8px;
+  padding-right: 14px;
+  padding-bottom: 8px;
+  padding-left: 14px;
+  background-color: #ddd;
+  color: #b0aebb;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.button-active {
+  background-color: #12a3d3;
+  color: #fff;
+}
+
+/* loader */
+
+/* pagination */
 .pagination {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -51,15 +238,13 @@ samp {
   align-items: center;
 }
 
-.pagination 
-  > .pagination__current-page {
+.pagination > .pagination__current-page {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.pagination 
-  > .pagination__button-group {
+.pagination > .pagination__button-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,29 +254,4 @@ samp {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
-
-.pagination 
-  > .pagination__button-group 
-  > .pagination__button {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: end;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding: 8px 16px 8px 16px;
-  background-color: #ddd;
-  color: #b0aebb;
-  border: none;
-}
-
-.pagination
-  > .pagination__button-group
-  > .pagination__button.pagination__button-active {
-  background-color: #12a3d3;
-  color: #fff;
 }
