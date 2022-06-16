@@ -22,13 +22,94 @@
           <h1>農村地方美食小吃特色料理頁面</h1>
         </div>
       </div>
+
       <div class="row">
-        <div class="col-12 col-md-8">lll</div>
-        <div class="col-md-4">rrr</div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div id="paginator" class="pagination"></div>
+        <div class="col-12 col-md-8">
+          <div class="container">
+            <div class="row">
+              <div class="col col-md-3 flex justify-start items-center">
+                <select
+                  id="city-selector"
+                  class="select w-full"
+                  name="city-selector"
+                >
+                  <option value="" selected disabled>請選擇行政區域</option>
+                </select>
+              </div>
+              <div class="col col-md-3 flex justify-start items-center">
+                <select
+                  id="town-selector"
+                  class="select w-full"
+                  name="town-selector"
+                >
+                  <option value="" selected disabled>請選擇鄉鎮區</option>
+                </select>
+              </div>
+              <div class="col col-md-6 flex justify-end items-center">
+                <label for="mode-switcher"> 檢視模式： </label>
+                <div id="mode-switcher" class="button-group">
+                  <button
+                    type="button"
+                    class="button button-icon"
+                    data-mode="list"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        d="M88 48C101.3 48 112 58.75 112 72V120C112 133.3 101.3 144 88 144H40C26.75 144 16 133.3 16 120V72C16 58.75 26.75 48 40 48H88zM480 64C497.7 64 512 78.33 512 96C512 113.7 497.7 128 480 128H192C174.3 128 160 113.7 160 96C160 78.33 174.3 64 192 64H480zM480 224C497.7 224 512 238.3 512 256C512 273.7 497.7 288 480 288H192C174.3 288 160 273.7 160 256C160 238.3 174.3 224 192 224H480zM480 384C497.7 384 512 398.3 512 416C512 433.7 497.7 448 480 448H192C174.3 448 160 433.7 160 416C160 398.3 174.3 384 192 384H480zM16 232C16 218.7 26.75 208 40 208H88C101.3 208 112 218.7 112 232V280C112 293.3 101.3 304 88 304H40C26.75 304 16 293.3 16 280V232zM88 368C101.3 368 112 378.7 112 392V440C112 453.3 101.3 464 88 464H40C26.75 464 16 453.3 16 440V392C16 378.7 26.75 368 40 368H88z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    class="button button-icon"
+                    data-mode="table"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 448 512"
+                    >
+                      <path
+                        d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    class="button button-icon"
+                    data-mode="grid"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 448 512"
+                    >
+                      <path
+                        d="M192 176C192 202.5 170.5 224 144 224H48C21.49 224 0 202.5 0 176V80C0 53.49 21.49 32 48 32H144C170.5 32 192 53.49 192 80V176zM192 432C192 458.5 170.5 480 144 480H48C21.49 480 0 458.5 0 432V336C0 309.5 21.49 288 48 288H144C170.5 288 192 309.5 192 336V432zM256 80C256 53.49 277.5 32 304 32H400C426.5 32 448 53.49 448 80V176C448 202.5 426.5 224 400 224H304C277.5 224 256 202.5 256 176V80zM448 432C448 458.5 426.5 480 400 480H304C277.5 480 256 458.5 256 432V336C256 309.5 277.5 288 304 288H400C426.5 288 448 309.5 448 336V432z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div id="foods">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div id="paginator" class="pagination"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <img src="./images/adv1.png" alt="ad1" />
+          <img src="./images/adv2.png" alt="ad2" />
+          <img src="./images/adv3.png" alt="ad3" />
         </div>
       </div>
     </div>
