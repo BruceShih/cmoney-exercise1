@@ -392,7 +392,7 @@ samp {
   height: auto;
 }
 
-.food-list > .food-content {
+.food-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -410,13 +410,13 @@ samp {
   padding-left: 0.75rem;
 }
 
-.food-list > .food-content > .food-title {
+.food-list > .food-title {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   color: black;
 }
 
-.food-list > .food-content > .food-subtitle {
+.food-list > .food-subtitle {
   display: inline-flex;
   flex-direction: column;
   position: absolute;
@@ -425,18 +425,18 @@ samp {
   color: white;
 }
 
-.food-list > .food-content > .food-subtitle > .badge {
+.food-list > .food-subtitle > .badge {
   flex-shrink: 1;
   margin-bottom: 0.5rem;
 }
 
-.food-list > .food-content > .food-subtitle > .caption {
+.food-list > .food-subtitle > .caption {
   margin-right: 0.5rem;
   color: gray;
   writing-mode: tb-rl;
 }
 
-.food-list > .food-content > .food-description {
+.food-list > .food-description {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -458,37 +458,25 @@ samp {
 .food-grid {
   flex: 0 0 auto;
   padding: 1rem;
+  position: relative;
   width: 50%;
   background-color: transparent;
   box-shadow: none;
 }
 
-.food-grid > .food-content {
-  display: flex;
-  flex-direction: column-reverse;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding-right: 2rem;
-  padding-left: 2rem;
-  z-index: 1;
-  color: white;
-}
-
-.food-grid > .food-content > .food-img {
+.food-grid > .food-img {
   position: relative;
   overflow: hidden;
 }
 
-.food-grid > .food-content > .food-img > img {
+.food-grid > .food-img > img {
   display: block;
   width: 100%;
   height: auto;
   transition: transform 0.4s ease-in-out;
 }
 
-.food-grid > .food-content > .food-img::after {
+.food-grid > .food-img::after {
   position: absolute;
   top: 0;
   left: 0;
@@ -497,20 +485,30 @@ samp {
   content: '';
   background-image: linear-gradient(
     to bottom,
-    rgba(black, 0) 0%,
-    rgba(black, 0.5) 100%
+    rgba(0, 0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0, 0.5) 100%
   );
   opacity: 1;
   transition: opacity 0.4s ease-in-out;
 }
 
-.food-grid > .food-content > .food-img:hover > img {
+.food-grid > .food-img:hover > img {
   transform: scale(1.3);
   transform-origin: 50% 50%;
 }
 
-.food-grid > .food-content > .food-img:hover::after {
+.food-grid > .food-img:hover::after {
   opacity: 0;
+}
+
+.food-grid > .food-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  padding: 1rem;
+  color: white;
 }
 
 .food-grid > .food-content > .food-title {
