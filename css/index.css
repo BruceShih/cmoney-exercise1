@@ -335,6 +335,13 @@ samp {
 /* module */
 /* ----- */
 
+/* ad */
+.ads > img:last-child {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 /* badge */
 .badge {
   padding-top: 0.25rem;
