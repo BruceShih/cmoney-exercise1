@@ -372,7 +372,6 @@ samp {
   -ms-flex-align: start;
   align-items: start;
   padding: 1rem;
-  position: relative;
   background-color: white;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   text-align: left;
@@ -392,7 +391,7 @@ samp {
   height: auto;
 }
 
-.food-list {
+.food-list > .food-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -406,37 +405,38 @@ samp {
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: start;
+  position: relative;
   padding-right: 0.75rem;
   padding-left: 0.75rem;
 }
 
-.food-list > .food-title {
+.food-list > .food-content > .food-title {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   color: black;
 }
 
-.food-list > .food-subtitle {
+.food-list > .food-content > .food-subtitle {
   display: inline-flex;
   flex-direction: column;
   position: absolute;
-  left: 25.5rem;
+  left: -20rem;
   z-index: 1;
   color: white;
 }
 
-.food-list > .food-subtitle > .badge {
+.food-list > .food-content > .food-subtitle > .badge {
   flex-shrink: 1;
   margin-bottom: 0.5rem;
 }
 
-.food-list > .food-subtitle > .caption {
+.food-list > .food-content > .food-subtitle > .caption {
   margin-right: 0.5rem;
   color: gray;
   writing-mode: tb-rl;
 }
 
-.food-list > .food-description {
+.food-list > .food-content > .food-description {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -445,23 +445,15 @@ samp {
   color: gray;
 }
 
-/* .food-table {
-  max-width: 100%;
-}
-
-.food-table td {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-} */
-
 .food-grid {
   flex: 0 0 auto;
   padding: 1rem;
   position: relative;
   width: 50%;
+  height: 200px;
   background-color: transparent;
   box-shadow: none;
+  overflow: hidden;
 }
 
 .food-grid > .food-img {
@@ -483,37 +475,39 @@ samp {
   height: 100%;
   width: 100%;
   content: '';
-  background-image: linear-gradient(
+  background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0, 0.5) 100%
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.5) 100%
   );
   opacity: 1;
-  transition: opacity 0.4s ease-in-out;
 }
 
-.food-grid > .food-img:hover > img {
+.food-grid:hover > .food-img > img {
   transform: scale(1.3);
   transform-origin: 50% 50%;
 }
 
-.food-grid > .food-img:hover::after {
-  opacity: 0;
-}
-
 .food-grid > .food-content {
   position: absolute;
-  bottom: 0;
+  bottom: -4rem;
   left: 0;
   width: 100%;
   z-index: 1;
-  padding: 1rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  padding-bottom: 1rem;
   color: white;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .food-grid > .food-content > .food-title {
   margin-top: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: 800;
 }
@@ -534,13 +528,23 @@ samp {
   font-size: 0.8rem;
 }
 
-.food-list > .food-content > .food-description {
+.food-grid > .food-content > .food-description {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  height: 2.4rem;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: gray;
+  color: white;
+  opacity: 0;
+}
+
+.food-grid:hover > .food-content {
+  bottom: -1rem;
+}
+
+.food-grid:hover > .food-content > .food-description {
+  opacity: 1;
 }
 
 /* icon button */
