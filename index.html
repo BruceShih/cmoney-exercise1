@@ -27,7 +27,9 @@
         <div class="col-12 col-md-8">
           <div class="container">
             <div class="row">
-              <div class="col col-md-3 flex justify-start items-center">
+              <div
+                class="col-12 col-md-3 flex justify-center justify-md-start items-center"
+              >
                 <select
                   id="city-selector"
                   class="select w-full"
@@ -36,7 +38,9 @@
                   <option value="" selected disabled>請選擇行政區域</option>
                 </select>
               </div>
-              <div class="col col-md-3 flex justify-start items-center">
+              <div
+                class="col-12 col-md-3 flex justify-center justify-md-start items-center"
+              >
                 <select
                   id="town-selector"
                   class="select w-full"
@@ -45,8 +49,10 @@
                   <option value="" selected disabled>請選擇鄉鎮區</option>
                 </select>
               </div>
-              <div class="col col-md-6 flex justify-end items-center">
-                <label for="mode-switcher"> 檢視模式： </label>
+              <div
+                class="col-12 col-md-6 flex justify-center justify-md-end items-center"
+              >
+                <label for="mode-switcher">檢視模式：</label>
                 <div id="mode-switcher" class="button-group">
                   <button
                     type="button"
@@ -95,8 +101,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <div id="foods" class="row">
-                </div>
+                <div id="foods"></div>
               </div>
             </div>
             <div class="row">
@@ -112,6 +117,12 @@
           <img src="./images/adv3.png" alt="ad3" />
         </div>
       </div>
+    </div>
+
+    <div id="loader" class="loader">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="25" stroke-width="8" fill="none" />
+      </svg>
     </div>
 
     <script src="./js/index.js"></script>

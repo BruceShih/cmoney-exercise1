@@ -40,12 +40,12 @@
 
   function init() {
     if (!data || data.length === 0) {
+      var loader = document.getElementById('loader');
       request.open(
         'GET',
         'https://data.coa.gov.tw/Service/OpenData/ODwsv/ODwsvTravelFood.aspx'
       );
       request.onload = function () {
-        isLoading = false;
         if (request.status === 200) {
           data = JSON.parse(request.response);
           totalPages = Math.ceil(data.length / pageSize);
@@ -57,12 +57,13 @@
 
           registerModeSwitcherEvents();
         }
+        loader.classList.remove('show');
       };
       request.onerror = function () {
-        isLoading = false;
+        loader.classList.remove('show');
       };
       request.onprogress = function () {
-        isLoading = true;
+        loader.classList.add('show');
       };
       request.send();
     }
@@ -140,7 +141,7 @@
     );
     if (modeSwitchers) {
       for (var i = 0; i < modeSwitchers.length; i++) {
-        if (i === 0) modeSwitchers[i].className += ' button-active';
+        if (i === 0) modeSwitchers[i].classList.add('button-active');
         modeSwitchers[i].addEventListener(
           'click',
           modeSwitcherEventHandler,
@@ -156,19 +157,15 @@
     );
     if (modeSwitchers) {
       for (var i = 0; i < modeSwitchers.length; i++) {
-        modeSwitchers[i].className = 'button button-icon';
+        modeSwitchers[i].classList.remove('button-active');
       }
     }
 
-    if (e.target.className.indexOf('button-active') <= 0) {
-      e.target.className += ' button-active';
-      displayMode = e.target.dataset.mode;
+    e.target.classList.add('button-active');
+    displayMode = e.target.dataset.mode;
 
-      // populateCitySelector();
-      // populateTownSelector();
-      populateFoods(displayMode);
-      populatePaginator();
-    }
+    populateFoods(displayMode);
+    populatePaginator();
   }
 
   function populateFoods(mode) {
@@ -179,7 +176,7 @@
     if (mode === 'table') {
       var foodTable = document.createElement('table');
       foodTable.className =
-        'table table-striped table-hover table-bordered table-responsive food-table';
+        'table table-striped table-hover table-bordered food-table';
 
       var foodTableHead = document.createElement('thead');
       var foodTableHeadRow = document.createElement('tr');
@@ -319,7 +316,7 @@
     for (var i = 0; i < totalPages; i++) {
       var button = document.createElement('button');
       button.className = 'button';
-      if (i === currentPage - 1) button.className += ' button-active';
+      if (i === currentPage - 1) button.classList.add('button-active');
       button.dataset.page = i + 1;
       button.innerText = (i + 1).toString();
       button.setAttribute('type', 'button');
@@ -337,14 +334,12 @@
     );
     if (pageButtons) {
       for (var i = 0; i < pageButtons.length; i++) {
-        pageButtons[i].className = 'button';
+        pageButtons[i].classList.remove('button-active');
       }
     }
 
-    if (e.target.className.indexOf('button-active') <= 0) {
-      e.target.className += ' button-active';
-      currentPage = e.target.dataset.page;
-    }
+    e.target.classList.add('button-active');
+    currentPage = e.target.dataset.page;
 
     populateFoods(displayMode);
     populatePaginator();
