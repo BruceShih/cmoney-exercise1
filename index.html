@@ -9,7 +9,7 @@
       name="keywords"
       content="農村, 地方, 美食, 農村美食, 農村小吃, 農村料理, 地方美食, 地方小吃, 地方料理, 地方特色小吃, 地方特色美食, 地方特色料理"
     />
-    <title>農村地方美食小吃特色料理頁面</title>
+    <title>農村地方美食小吃特色料理</title>
 
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/index.css" />
@@ -19,12 +19,12 @@
     <div class="container">
       <div class="row">
         <div class="col flex justify-center">
-          <h1>農村地方美食小吃特色料理頁面</h1>
+          <h1 class="page__title">農村地方美食小吃特色料理</h1>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-12 col-md-8">
+        <div class="col">
           <div class="container">
             <div class="row">
               <div
@@ -50,10 +50,11 @@
                 </select>
               </div>
               <div
+                id="mode-switcher"
                 class="col-12 col-md-6 flex justify-center justify-md-end items-center"
               >
                 <label for="mode-switcher">檢視模式：</label>
-                <div id="mode-switcher" class="button-group">
+                <div class="button-group">
                   <button
                     type="button"
                     class="button button-icon"
@@ -100,9 +101,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col">
-                <div id="foods"></div>
-              </div>
+              <div id="foods" class="col"></div>
             </div>
             <div class="row">
               <div class="col">
@@ -111,11 +110,7 @@
             </div>
           </div>
         </div>
-        <div class="ads col-md-4">
-          <img src="./images/adv1.png" alt="ad1" />
-          <img src="./images/adv2.png" alt="ad2" />
-          <img src="./images/adv3.png" alt="ad3" />
-        </div>
+        <div id="ads" class="ads flex-shrink"></div>
       </div>
     </div>
 

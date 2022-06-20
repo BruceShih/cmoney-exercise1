@@ -67,6 +67,16 @@
       };
       request.send();
     }
+
+    if (window.screen.width > 768) {
+      var ads = document.getElementById('ads');
+      for (var i = 1; i <= 3; i++) {
+        var ad = document.createElement('img');
+        ad.src = './images/adv' + i + '.png';
+        ad.alt = 'ad' + i;
+        ads.appendChild(ad);
+      }
+    }
   }
 
   function populateCitySelector() {
@@ -137,7 +147,7 @@
 
   function registerModeSwitcherEvents() {
     var modeSwitchers = document.querySelectorAll(
-      '#mode-switcher > .button-icon'
+      '#mode-switcher .button-icon'
     );
     if (modeSwitchers) {
       for (var i = 0; i < modeSwitchers.length; i++) {
@@ -153,7 +163,7 @@
 
   function modeSwitcherEventHandler(e) {
     var modeSwitchers = document.querySelectorAll(
-      '#mode-switcher > .button-icon'
+      '#mode-switcher .button-icon'
     );
     if (modeSwitchers) {
       for (var i = 0; i < modeSwitchers.length; i++) {
@@ -171,12 +181,13 @@
   function populateFoods(mode) {
     var data = getData(selectedCity, selectedTown, currentPage);
     var foods = document.getElementById('foods');
+    foods.className = 'col';
     foods.innerHTML = '';
 
     if (mode === 'table') {
+      foods.classList.add('overflow-x-auto');
       var foodTable = document.createElement('table');
-      foodTable.className =
-        'table table-striped table-hover table-bordered food-table';
+      foodTable.className = 'table table-striped table-hover table-bordered food__table';
 
       var foodTableHead = document.createElement('thead');
       var foodTableHeadRow = document.createElement('tr');
@@ -194,6 +205,8 @@
         var food = data[i];
         var foodTableBodyRow = document.createElement('tr');
         var foodTableBodyId = document.createElement('td');
+        foodTableBodyId.classList.add('food__table--color-gray');
+        foodTableBodyId.classList.add('text-right');
         foodTableBodyId.innerText = (
           i +
           1 +
@@ -201,9 +214,11 @@
         ).toString();
         foodTableBodyRow.appendChild(foodTableBodyId);
         var foodTableBodyCity = document.createElement('td');
+        foodTableBodyCity.classList.add('food__table--color-gray');
         foodTableBodyCity.innerText = food.City;
         foodTableBodyRow.appendChild(foodTableBodyCity);
         var foodTableBodyTown = document.createElement('td');
+        foodTableBodyTown.classList.add('food__table--color-gray');
         foodTableBodyTown.innerText = food.Town;
         foodTableBodyRow.appendChild(foodTableBodyTown);
         var foodTableBodyName = document.createElement('td');
@@ -218,12 +233,15 @@
       foods.appendChild(foodTable);
     } else if (mode === 'grid') {
       for (var i = 0; i < data.length; i++) {
+        foods.classList.add('grid');
+        foods.classList.add('grid-1');
+        foods.classList.add('grid-md-2');
         var food = data[i];
         var foodItem = document.createElement('div');
-        foodItem.className = 'food food-grid';
+        foodItem.className = 'food food__grid';
 
         var foodImage = document.createElement('div');
-        foodImage.className = 'food-img';
+        foodImage.className = 'food__img';
         var img = document.createElement('img');
         img.src = food.PicURL;
         img.alt = food.Name;
@@ -232,25 +250,25 @@
         foodItem.appendChild(foodImage);
 
         var foodContent = document.createElement('div');
-        foodContent.className = 'food-content';
+        foodContent.className = 'food__content';
         var foodSubtitle = document.createElement('div');
-        foodSubtitle.className = 'food-subtitle';
+        foodSubtitle.className = 'food__subtitle';
         var foodBadge = document.createElement('div');
         foodBadge.className = 'badge';
         foodBadge.innerText = food.City;
         var foodCaption = document.createElement('div');
-        foodCaption.className = 'caption';
+        foodCaption.className = 'food__caption';
         foodCaption.innerText = food.Town;
         foodSubtitle.appendChild(foodBadge);
         foodSubtitle.appendChild(foodCaption);
         foodContent.appendChild(foodSubtitle);
         var foodTitle = document.createElement('h2');
-        foodTitle.className = 'food-title';
+        foodTitle.className = 'food__title';
         foodTitle.innerText = food.Name;
         foodContent.appendChild(foodTitle);
 
         var foodDescription = document.createElement('p');
-        foodDescription.className = 'food-description';
+        foodDescription.className = 'food__description';
         foodDescription.innerText = food.HostWords;
         foodContent.appendChild(foodDescription);
 
@@ -263,10 +281,10 @@
       for (var i = 0; i < data.length; i++) {
         var food = data[i];
         var foodItem = document.createElement('div');
-        foodItem.className = 'food food-list';
+        foodItem.className = 'food food__list';
 
         var foodImage = document.createElement('div');
-        foodImage.className = 'food-img';
+        foodImage.className = 'food__img';
         var img = document.createElement('img');
         img.src = food.PicURL;
         img.alt = food.Name;
@@ -274,25 +292,26 @@
         foodImage.appendChild(img);
 
         var foodContent = document.createElement('div');
-        foodContent.className = 'food-content';
+        foodContent.className = 'food__content';
         var foodTitle = document.createElement('h2');
+        foodTitle.classList.add('food__title');
         foodTitle.innerText = food.Name;
         foodContent.appendChild(foodTitle);
 
         var foodSubtitle = document.createElement('div');
-        foodSubtitle.className = 'food-subtitle';
+        foodSubtitle.className = 'food__subtitle';
         var foodBadge = document.createElement('div');
         foodBadge.className = 'badge';
         foodBadge.innerText = food.City;
         var foodCaption = document.createElement('div');
-        foodCaption.className = 'caption';
+        foodCaption.className = 'food__caption';
         foodCaption.innerText = food.Town;
         foodSubtitle.appendChild(foodBadge);
         foodSubtitle.appendChild(foodCaption);
         foodContent.appendChild(foodSubtitle);
 
         var foodDescription = document.createElement('p');
-        foodDescription.className = 'food-description';
+        foodDescription.className = 'food__description';
         foodDescription.innerText = food.HostWords;
         foodContent.appendChild(foodDescription);
 
