@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "module": "es2015",
+    "module": "esnext",
     "moduleResolution": "classic",
-    "target": "es2015",
+    "target": "esnext",
     "strictNullChecks": true,
     "strictFunctionTypes": true
   }
