@@ -1,14 +1,19 @@
-import { Dom } from './dom';
-import { displayMode } from './mode';
-import { initializePaginator, currentPage } from './paginator';
+import { Dom } from './dom.js';
+import { getCities, getTowns } from './data.js';
+import { initializeFoods } from './food.js';
+import {
+  initializePaginator,
+  resetCurrentPage,
+  registerPaginatorEventHandler
+} from './paginator.js';
 
 export let selectedCity = '';
 export let selectedTown = '';
 
-export function initializeCitySelector(cityOptions) {
+export function initializeCitySelector() {
   let optionsHtml = '';
-  const citySelector = new Dom().getById('city-selector');
-  citySelector.setInnerHTML('');
+  const citySelector = new Dom().getById('City-selector');
+  citySelector.setInnerHtml('');
   citySelector.addEventListener('change', citySelectorEventHandler);
 
   const defaultOption = new Dom('option');
@@ -18,29 +23,33 @@ export function initializeCitySelector(cityOptions) {
   defaultOption.setValue('');
   optionsHtml += defaultOption.toString();
 
-  cityOptions.forEach((city) => {
-    const option = new Dom('option');
-    option.setInnerText(city);
-    option.setValue(city);
-    optionsHtml += option.toString();
-  });
+  const cityOptions = getCities();
 
-  citySelector.setInnerHTML(optionsHtml);
+  if (cityOptions instanceof Array && cityOptions.length > 0)
+    cityOptions.forEach((city) => {
+      const option = new Dom('option');
+      option.setInnerText(city);
+      option.setValue(city);
+      optionsHtml += option.toString();
+    });
+
+  citySelector.setInnerHtml(optionsHtml);
 }
 
 function citySelectorEventHandler(e) {
-  currentPage = 1;
+  resetCurrentPage();
   selectedCity = e.target.value;
   selectedTown = '';
-  initializeTownSelector(dataService.selectedCity);
-  populateFoods(displayMode);
+  initializeTownSelector(selectedCity);
+  initializeFoods();
   initializePaginator();
+  registerPaginatorEventHandler();
 }
 
-export function initializeTownSelector(townOptions) {
+export function initializeTownSelector() {
   let optionsHtml = '';
-  const townSelector = new Dom().getById('town-selector');
-  townSelector.setInnerHTML('');
+  const townSelector = new Dom().getById('Town-selector');
+  townSelector.setInnerHtml('');
   townSelector.addEventListener('change', townSelectorEventHandler);
 
   const defaultOption = new Dom('option');
@@ -50,19 +59,23 @@ export function initializeTownSelector(townOptions) {
   defaultOption.setValue('');
   optionsHtml += defaultOption.toString();
 
-  townOptions.forEach((town) => {
-    const option = new Dom('option');
-    option.setInnerText(town);
-    option.setValue(town);
-    optionsHtml += option.toString();
-  });
+  const townOptions = getTowns(selectedCity);
 
-  townSelector.setInnerHTML(optionsHtml);
+  if (townOptions instanceof Array && townOptions.length > 0)
+    townOptions.forEach((town) => {
+      const option = new Dom('option');
+      option.setInnerText(town);
+      option.setValue(town);
+      optionsHtml += option.toString();
+    });
+
+  townSelector.setInnerHtml(optionsHtml);
 }
 
 function townSelectorEventHandler(e) {
-  currentPage = 1;
+  resetCurrentPage();
   selectedTown = e.target.value;
-  populateFoods(displayMode);
+  initializeFoods();
   initializePaginator();
+  registerPaginatorEventHandler();
 }

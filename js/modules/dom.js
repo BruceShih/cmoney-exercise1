@@ -13,56 +13,68 @@ export class Dom {
   }
 
   setInnerHtml(htmlString) {
-    this._dom.innerHTML = sanitize(htmlString);
+    if (this._dom)
+      this._dom.innerHTML = htmlString;
   }
 
   setInnerText(text) {
-    this._dom.innerText = text;
+    if (this._dom)
+      this._dom.innerText = text;
   }
 
   setAttribute(name, value) {
-    this._dom.setAttribute(name, value);
+    if (this._dom)
+      this._dom.setAttribute(name, value);
   }
 
   removeAttribute(name) {
-    this._dom.removeAttribute(name);
+    if (this._dom)
+      this._dom.removeAttribute(name);
   }
 
   setClassList(classList) {
-    this._dom.classList = classList;
+    if (this._dom) {
+      if (classList.length > 0) {
+        classList.forEach((newClass) => {
+          this.addClass(newClass);
+        })
+      }
+    }
+  }
+
+  setDataSet(dataSet) {
+    if (this._dom) {
+      const keys = Object.keys(dataSet);
+      if (keys.length > 0) {
+        keys.forEach((key) => {
+          this._dom.dataset[key] = dataSet[key];
+        });
+      }
+    }
   }
 
   addClass(newClass) {
-    this._dom.classList.add(newClass);
+    if (this._dom)
+      this._dom.classList.add(newClass);
   }
 
-  removeClass(oldClass) {
-    this._dom.classList.remove(oldClass);
+  removeAllClass() {
+    if (this._dom)
+      this._dom.classList = '';
   }
 
   setValue(value) {
-    this._dom.value = value;
-  }
-
-  appendTo(target) {
-    target.appendChild(this._dom);
-  }
-
-  appendHtmlTo(target) {
-    target.innerHTML += this._dom.innerHTML;
+    if (this._dom)
+      this._dom.value = value;
   }
 
   addEventListener(event, handler) {
-    this._dom.addEventListener(event, handler);
+    if (this._dom)
+      this._dom.addEventListener(event, handler);
   }
 
   toString() {
-    return this._dom.innerHTML.toString();
-  }
-
-  sanitize(htmlString) {
-    return htmlString.replace(/javascript:/gi, '').replace(/[^\w-_. ]/gi, (c) => {
-      return `&#${c.charCodeAt(0)};`;
-    });
+    if (this._dom)
+      return this._dom.outerHTML.toString();
   }
 }

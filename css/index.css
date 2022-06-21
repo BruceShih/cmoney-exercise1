@@ -16,6 +16,14 @@ body {
   background-color: #eee;
 }
 
+a {
+  color: black;
+}
+
+a:hover {
+  color: #19a2cf;
+}
+
 table {
   border-collapse: collapse;
 }
@@ -64,7 +72,7 @@ samp {
 }
 
 .button-active {
-  background-color: #12a3d3;
+  background-color: #19a2cf;
   color: white;
 }
 
@@ -369,6 +377,11 @@ samp {
   text-align: right !important;
 }
 
+.sticky {
+  position: sticky;
+  top: 0;
+}
+
 /* module */
 /* ----- */
 
@@ -378,12 +391,8 @@ samp {
 }
 
 .ads > img {
+  margin-bottom: 1rem;
   width: 100%;
-}
-
-.ads > img:last-child {
-  position: sticky;
-  top: 0;
 }
 
 /* badge */
@@ -407,13 +416,13 @@ samp {
 }
 
 /* food */
-#foods {
+#Foods {
   -webkit-overflow-scrolling: touch;
   white-space: wrap;
 }
 
 @media (max-width: 576px) {
-  #foods {
+  #Foods {
     -webkit-overflow-scrolling: touch;
   }
 }
@@ -455,8 +464,8 @@ samp {
 .food__list > .food__content > .food__title {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  color: black;
   font-size: 2rem;
+  font-weight: 800;
 }
 
 .food__list > .food__content > .food__subtitle {
@@ -665,15 +674,15 @@ samp {
 }
 
 /* mode switcher */
-#mode-switcher > label {
+#Mode-switcher > label {
   color: #b0aebb;
 }
 
-#mode-switcher .button-active {
+#Mode-switcher .button-active {
   background-color: transparent;
 }
 
-#mode-switcher .button-active > svg {
+#Mode-switcher .button-active > svg {
   fill: black !important;
 }
 

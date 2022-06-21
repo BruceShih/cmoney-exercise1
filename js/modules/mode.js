@@ -1,8 +1,10 @@
+import { initializeFoods } from './food.js';
+
 export let displayMode = 'list';
 
 export function initializeModeSwitcher() {
   const modeSwitchers = document.querySelectorAll(
-    '#mode-switcher .button-icon'
+    '#Mode-switcher .button-icon'
   );
   if (modeSwitchers) {
     modeSwitchers.forEach((switcher, index) => {
@@ -14,13 +16,13 @@ export function initializeModeSwitcher() {
 
 function modeSwitcherEventHandler(e) {
   let previousActiveModeSwitcher = document.querySelector(
-    '#mode-switcher .button-active'
+    '#Mode-switcher .button-active'
   );
-  previousActiveModeSwitcher.classList.remove('button-active');
+  if (previousActiveModeSwitcher)
+    previousActiveModeSwitcher.classList.remove('button-active');
 
   e.target.classList.add('button-active');
   displayMode = e.target.dataset.mode;
 
-  // TODO: import this
-  populateFoods(displayMode);
+  initializeFoods();
 }
