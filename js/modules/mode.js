@@ -4,24 +4,30 @@ export let displayMode = 'list';
 
 export function initializeModeSwitcher() {
   const modeSwitchers = document.querySelectorAll(
-    '#Mode-switcher .button-icon'
+    '#ModeSwitcher .button-icon'
   );
   if (modeSwitchers) {
     modeSwitchers.forEach((switcher, index) => {
-      if (index === 0) switcher.classList.add('button-active');
-      switcher.addEventListener('click', modeSwitcherEventHandler, false);
+      if (index === 0) {
+        switcher.classList.add('button-active');
+        switcher.classList.add('bg-transparent');
+      }
+      switcher.addEventListener('click', modeSwitcherEventHandler);
     });
   }
 }
 
 function modeSwitcherEventHandler(e) {
   let previousActiveModeSwitcher = document.querySelector(
-    '#Mode-switcher .button-active'
+    '#ModeSwitcher .button-active'
   );
-  if (previousActiveModeSwitcher)
+  if (previousActiveModeSwitcher) {
     previousActiveModeSwitcher.classList.remove('button-active');
+    previousActiveModeSwitcher.classList.remove('bg-transparent');
+  }
 
   e.target.classList.add('button-active');
+  e.target.classList.add('bg-transparent');
   displayMode = e.target.dataset.mode;
 
   initializeFoods();

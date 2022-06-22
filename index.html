@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/index.css" />
+
+    <script type="module" src="./js/index.js"></script>
   </head>
 
   <body>
@@ -31,9 +33,9 @@
                 class="col-12 col-md-3 flex justify-center justify-md-start items-center"
               >
                 <select
-                  id="City-selector"
+                  id="CitySelector"
                   class="select w-full"
-                  name="City-selector"
+                  name="CitySelector"
                 >
                   <option value="" selected disabled>請選擇行政區域</option>
                 </select>
@@ -42,18 +44,18 @@
                 class="col-12 col-md-3 flex justify-center justify-md-start items-center"
               >
                 <select
-                  id="Town-selector"
+                  id="TownSelector"
                   class="select w-full"
-                  name="Town-selector"
+                  name="TownSelector"
                 >
                   <option value="" selected disabled>請選擇鄉鎮區</option>
                 </select>
               </div>
               <div
-                id="Mode-switcher"
+                id="ModeSwitcher"
                 class="col-12 col-md-6 flex justify-center justify-md-end items-center"
               >
-                <label for="mode-switcher">檢視模式：</label>
+                <label for="ModeSwitcher">檢視模式：</label>
                 <div class="button-group">
                   <button
                     type="button"
@@ -101,7 +103,7 @@
               </div>
             </div>
             <div class="row">
-              <div id="Foods" class="col"></div>
+              <div id="Foods" class="col-12"></div>
             </div>
             <div class="row">
               <div class="col">
@@ -119,7 +121,5 @@
         <circle cx="50" cy="50" r="25" stroke-width="8" fill="none" />
       </svg>
     </div>
-
-    <script type="module" src="./js/index.js"></script>
   </body>
 </html>

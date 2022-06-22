@@ -24,6 +24,7 @@ export function initializeFoods() {
 function renderFoodList(rows) {
   const foods = new Dom().getById('Foods');
   foods.removeAllClass();
+  foods.addClass('col-12');
   foods.setInnerHtml('');
 
   let foodHtml = '';
@@ -72,6 +73,7 @@ function renderFoodTable(rows) {
   const currentPage = window.sessionStorage.getItem('currentPage');
   const foods = new Dom().getById('Foods');
   foods.removeAllClass();
+  foods.addClass('col-12');
   foods.addClass('overflow-x-auto');
   foods.setInnerHtml('');
 
@@ -100,19 +102,19 @@ function renderFoodTable(rows) {
 
       const foodTableBodyId = createFoodElement(
         'td',
-        ['food__table--color-gray', 'text-right'],
+        ['food-table--color-gray', 'text-right'],
         `${index + 1 + (currentPage - 1) * 10}`
       );
       foodTableBodyRowHtml += foodTableBodyId.toString();
       const foodTableBodyCity = createFoodElement(
         'td',
-        ['food__table--color-gray'],
+        ['food-table--color-gray'],
         row.City
       );
       foodTableBodyRowHtml += foodTableBodyCity.toString();
       const foodTableBodyTown = createFoodElement(
         'td',
-        ['food__table--color-gray'],
+        ['food-table--color-gray'],
         row.Town
       );
       foodTableBodyRowHtml += foodTableBodyTown.toString();
@@ -138,7 +140,7 @@ function renderFoodTable(rows) {
 function renderFoodGrid(rows) {
   const foods = new Dom().getById('Foods');
   foods.removeAllClass();
-  foods.addClass('col');
+  foods.addClass('col-12');
   foods.addClass('grid');
   foods.addClass('grid-1');
   foods.addClass('grid-md-2');
@@ -192,7 +194,7 @@ function createFoodTable() {
     'table-striped',
     'table-hover',
     'table-bordered',
-    'food__table'
+    'food-table'
   ]);
   return table;
 }
@@ -201,7 +203,7 @@ function createFoodItem(mode, clickable, link) {
   switch (mode) {
     case 'grid':
       const gridItem = clickable ? new Dom('a') : new Dom('div');
-      gridItem.setClassList(['food', 'food__grid']);
+      gridItem.setClassList(['food', 'food-grid']);
       if (clickable) {
         gridItem.setAttribute('href', link);
         gridItem.setAttribute('target', '_blank');
@@ -210,7 +212,7 @@ function createFoodItem(mode, clickable, link) {
     case 'list':
     default:
       const listItem = new Dom('div');
-      listItem.setClassList(['food', 'food__list']);
+      listItem.setClassList(['food', 'food-list']);
       return listItem;
   }
 }

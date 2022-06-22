@@ -6,7 +6,7 @@ import {
   initializeCitySelector,
   initializeTownSelector
 } from './modules/location.js';
-import { initializePaginator, registerPaginatorEventHandler } from './modules/paginator.js';
+import { initializePaginator } from './modules/paginator.js';
 
 async function initializeApp() {
   await initializeData();
@@ -20,4 +20,3 @@ async function initializeApp() {
 }
 
 await initializeApp();
-document.addEventListener('DOMContentLoaded', registerPaginatorEventHandler, false);

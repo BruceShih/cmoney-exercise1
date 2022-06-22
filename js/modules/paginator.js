@@ -5,8 +5,8 @@ export function initializePaginator() {
   const totalPages = window.sessionStorage.getItem('totalPages');
   const currentPage = window.sessionStorage.getItem('currentPage');
 
-  let paginatorHtml = '';
   const paginator = new Dom().getById('Paginator');
+  let paginatorHtml = '';
   if (paginator) {
     paginator.setInnerHtml('');
     const text = new Dom('div');
@@ -30,18 +30,9 @@ export function initializePaginator() {
     paginatorHtml += text.toString();
     paginatorHtml += buttonGroup.toString();
     paginator.setInnerHtml(paginatorHtml);
-  }
-}
 
-export function resetCurrentPage() {
-  window.sessionStorage.setItem('currentPage', 1);
-}
-
-export function registerPaginatorEventHandler() {
-  const paginatorButtons = document.querySelectorAll('#Paginator .button');
-  if (paginatorButtons) {
-    paginatorButtons.forEach((button, index) => {
-      button.addEventListener('click', (e) => {
+    paginator.addEventListener('click', (e) => {
+      if (e.target.tagName === 'BUTTON') {
         const activeButton = document.querySelector(
           '#Paginator .button-active'
         );
@@ -50,7 +41,11 @@ export function registerPaginatorEventHandler() {
         window.sessionStorage.setItem('currentPage', e.target.dataset.page);
 
         initializeFoods();
-      });
+      }
     });
   }
+}
+
+export function resetCurrentPage() {
+  window.sessionStorage.setItem('currentPage', 1);
 }

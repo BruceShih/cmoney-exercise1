@@ -1,18 +1,14 @@
 import { Dom } from './dom.js';
 import { getCities, getTowns } from './data.js';
 import { initializeFoods } from './food.js';
-import {
-  initializePaginator,
-  resetCurrentPage,
-  registerPaginatorEventHandler
-} from './paginator.js';
+import { initializePaginator, resetCurrentPage } from './paginator.js';
 
 export let selectedCity = '';
 export let selectedTown = '';
 
 export function initializeCitySelector() {
   let optionsHtml = '';
-  const citySelector = new Dom().getById('City-selector');
+  const citySelector = new Dom().getById('CitySelector');
   citySelector.setInnerHtml('');
   citySelector.addEventListener('change', citySelectorEventHandler);
 
@@ -43,12 +39,11 @@ function citySelectorEventHandler(e) {
   initializeTownSelector(selectedCity);
   initializeFoods();
   initializePaginator();
-  registerPaginatorEventHandler();
 }
 
 export function initializeTownSelector() {
   let optionsHtml = '';
-  const townSelector = new Dom().getById('Town-selector');
+  const townSelector = new Dom().getById('TownSelector');
   townSelector.setInnerHtml('');
   townSelector.addEventListener('change', townSelectorEventHandler);
 
@@ -77,5 +72,4 @@ function townSelectorEventHandler(e) {
   selectedTown = e.target.value;
   initializeFoods();
   initializePaginator();
-  registerPaginatorEventHandler();
 }
